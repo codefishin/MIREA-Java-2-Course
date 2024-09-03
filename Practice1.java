@@ -15,7 +15,6 @@ import java.util.Scanner;
 *   }
 * */
 // ВТОРОЕ ЗАДАНИЕ
-import java.util.Scanner;
 public class Main
 {
     public static void main(String[] args)
