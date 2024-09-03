@@ -15,64 +15,33 @@ import java.util.Scanner;
 *   }
 * */
 // ВТОРОЕ ЗАДАНИЕ
+import java.util.Scanner;
 public class Main
 {
     public static void main(String[] args)
     {
         final double yuan_rub_conv = 11.91; // курс
-        int yuan; // юани
-        double ruble; // рубли
-        int digit_rub;
-        int digit_yuan;
+        String yuan_text; // текст юаня
         Scanner input = new Scanner(System.in);
-        yuan = input.nextInt();
-        ruble = yuan * yuan_rub_conv;
-        digit_yuan = yuan % 10;
-        digit_rub = (int)ruble % 10; // привидение, бу
-        if (yuan == 1) // Китайский Юань
+
+        int yuan = input.nextInt(); // Переменная Юаней
+        double ruble = yuan * yuan_rub_conv; // Переменная рублей
+        int digit_yuan = yuan % 10; // Последнее число у Юаней
+
+        float rub_result = Math.round(ruble); // Округление результата
+
+        if (yuan == 1) // Юань
         {
-            if (digit_rub > 1 && digit_rub < 5) // Рубля
-            {
-                System.out.println(yuan + " Китайский Юань равен " + ruble + " рубля");
-            }
-            else if (ruble == 1) // Рубль
-            {
-                System.out.println(yuan + " Китайский Юань равен " + ruble + " рубль");
-            }
-            else // Рублей
-            {
-                System.out.println(yuan + " Китайский Юань равен " + ruble + " рублей");
-            }
+            yuan_text = " Китайский Юань равно ";
         }
-        else if (digit_yuan > 1 && digit_yuan < 5) // Китайских Юаня
+        else if (digit_yuan > 1 && digit_yuan < 5 && (yuan > 19 || yuan < 10))
         {
-            if (digit_rub > 2 && digit_rub < 5)
-            {
-                System.out.println(yuan + " Китайских Юаня равен " + ruble + " рубля");
-            }
-            else if (ruble == 1)
-            {
-                System.out.println(yuan + " Китайских Юаня равен " + ruble + " рубль");
-            }
-            else
-            {
-                System.out.println(yuan + " Китайских Юаня равен " + ruble + " рублей");
-            }
+            yuan_text = " Китайских Юаня равно ";
         }
-        else // Китайских Юаней
+        else
         {
-            if (digit_rub > 2 && digit_rub < 5)
-            {
-                System.out.println(yuan + " Китайских Юаней равен " + ruble + " рубля");
-            }
-            else if (ruble == 1)
-            {
-                System.out.println(yuan + " Китайских Юаней равен " + ruble + " рубль");
-            }
-            else
-            {
-                System.out.println(yuan + " Китайских Юаней равен " + ruble + " рублей");
-            }
+            yuan_text = " Китайских Юаней равно ";
         }
+        System.out.println(yuan + yuan_text + rub_result + " рублям."); // здесь используются переменные чисел и текстов
     }
 }
