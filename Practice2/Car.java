@@ -1,30 +1,34 @@
 public class Car {
-    String model;
+    String model; // переменные класса (или же поля)
     String license;
     String color;
     int year;
-    public Car(String m_model, String m_license, String m_color, int m_year)
+    
+    public Car(String m_model, String m_license, String m_color, int m_year) // полный конструктор
     {
         model = m_model;
         license = m_license;
         color = m_color;
         year = m_year;
     }
-    public Car()
+    
+    public Car() // конструктор без ввода
     {
         model = null;
         license = null;
         color = null;
         year = 0;
     }
-    public Car(String m_model, int m_year)
+    
+    public Car(String m_model, int m_year) // конструктор по выбору. Я решил модель + год
     {
         model = m_model;
         year = m_year;
         license = null;
         color = null;
     }
-    public void To_String()
+    
+    public void To_String() // Метод вывода по условию задачи
     {
         if (model == null) System.out.println("Error retrieving model info");
         else System.out.println("Model: " + model);
@@ -38,7 +42,8 @@ public class Car {
         if (year == 0) System.out.println("Error retrieving year info");
         else System.out.println("Year: " + year);
     }
-    public void Modify_Year(int new_year)
+    
+    public void Modify_Year(int new_year) // Методы изменения полей внутри ниже
     {
         year = new_year;
     }
