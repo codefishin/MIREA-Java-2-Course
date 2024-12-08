@@ -66,17 +66,20 @@ public class NoteHttpServer {
         }
         queryTemp.delete(0,1);
         Map <String, String> data = queryToMap(queryTemp.toString());
-        if (data.isEmpty()) {
-            System.out.println("aw hell naw user stoopid, error 400");
-            handleInputError(out);
-        }
-        else if (method.equals("GET") && pageURL.toString().equals("/convert")) {
-            String from = data.get("from");
-            String to = data.get("to");
-            String valueStr = data.get("value");
-            double value = Double.parseDouble(valueStr);
-            System.out.println(from + to + value);
-            handleGetConvert(out, from, to, value);
+        if (method.equals("GET") && pageURL.toString().equals("/convert")) {
+            if (data.get("from") == null
+                    || data.get("to") == null ||
+                    data.get("value") == null) {
+                handleBadInput(out);
+                System.err.println("400 error");
+            } else {
+                String from = data.get("from");
+                String to = data.get("to");
+                String valueStr = data.get("value");
+                double value = Double.parseDouble(valueStr);
+                System.out.println(from + to + value);
+                handleGetConvert(out, from, to, value);
+            }
         } else {
             System.err.println("404 path is " + query);
             handleNotFound(out);
@@ -88,6 +91,10 @@ public class NoteHttpServer {
         double valueRes = 0;
         if (from.equals("meters") && to.equals("kilometers")) {
             valueRes = value / 1000;
+        } else {
+            System.err.println("400 error");
+            handleBadInput(out);
+            return;
         }
         System.out.println("Values: " + value + " " + valueRes);
         String response = "<html><body><h1>Converting</h1><ul>" +
@@ -97,9 +104,9 @@ public class NoteHttpServer {
         sendHttpResponse(out, 200, response);
 
     }
-    private static void handleInputError(PrintWriter out) {
-        sendHttpResponse(out, 400, "<html><body><h1>bro wrong format ;-;</h1>" +
-        "handleInputError activated!!!</body></html>");
+    private static void handleBadInput(PrintWriter out) {
+        sendHttpResponse(out, 400, "<html><body><h1 style=\"background-color:Tomato;\">bro wrong format ;-;</h1>" +
+        "check if your url is equal to: /convert?value=(your value here)&from=meters&to=kilometers; handleBadInput activated!!!</body></html>");
     }
     private static void handleNotFound(PrintWriter out) {
         sendHttpResponse(out, 404,
