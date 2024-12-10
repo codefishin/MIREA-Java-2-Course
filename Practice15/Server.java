@@ -1,7 +1,7 @@
 import java.io.*;
 import java.net.*;
 import java.util.*;
-public class NoteHttpServer {
+public class Server {
     private static final int PORT = 2626;
     // main
     public static void main(String[] args) {
