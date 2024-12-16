@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org " lang="en">
+<head>
+  <title>Login</title>
+</head>
+<body>
+<h1>Login</h1>
+<div th:if="${error}" style="color: red;">[[${error}]]</div>
+<form action="#" th:action="@{/login}" method="post">
+  <label>Username: <input type="text" name="username"/></label><br/>
+  <label>Password: <input type="password" name="password"/></label><br/>
+  <input type="submit" value="Login!"/>
+</form>
+</body>
+</html>

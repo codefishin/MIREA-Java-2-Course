@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+  <title>Register</title>
+</head>
+<body>
+<h1>Register</h1>
+<div th:if="${error}" style="color: red;">[[${error}]]</div>
+<form action="#" th:action="@{/register}" method="post">
+  <label>Username: <input type="text" name="username"/></label><br/>
+  <label>Password: <input type="password" name="password"/></label><br/>
+  <input type="submit" value="Register!"/>
+</form>
+</body>
+</html>
