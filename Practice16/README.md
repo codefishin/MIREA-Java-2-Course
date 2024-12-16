@@ -10,5 +10,5 @@ git clone <URL репы>
 Не забудьте установить Spring Web, как на скриншоте
 ![image](https://github.com/user-attachments/assets/3cf44644-76ee-4abe-81f3-aa375784c64f)
 (другие библиотеки на свой вкус и цвет)
-### 2. Код для поддержки сайта будет всегда вызывать Circular view (aka infloop)
+### 2. Код из методички для поддержки сайта будет всегда вызывать Circular view (aka infloop)
 Это исправлено в коде.
